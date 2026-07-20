@@ -11,7 +11,7 @@ export const company = {
   foundedCity: "Çorum",
   hqCity: "Ankara",
 
-  // TODO: Gerçek iletişim bilgilerini girin
+  // TODO: Telefon numarası doğrulanacak (siteden çekilemedi)
   phone: "+90 (312) 000 00 00",
   phoneHref: "tel:+903120000000",
   email: "info@almilagrup.com.tr",
@@ -20,8 +20,8 @@ export const company = {
     {
       city: "Ankara",
       label: "Merkez",
-      // TODO: Gerçek adres girilecek
-      address: "Ankara / Türkiye",
+      address:
+        "Mustafa Kemal Mah. 2125. Sok. Kolbay İş Merkezi No: 6A/4 Çankaya / Ankara",
     },
     {
       city: "Antalya",
