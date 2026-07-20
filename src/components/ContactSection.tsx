@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from "react";
-import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { company } from "@/data/company";
 
 export function ContactSection() {
@@ -23,58 +23,63 @@ export function ContactSection() {
   };
 
   return (
-    <section id="iletisim" className="relative scroll-mt-20 bg-ink-soft py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-20 md:px-8">
+    <section id="iletisim" className="relative scroll-mt-20 overflow-hidden bg-ink py-28 md:py-36">
+      {/* Köşe ışıması */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 55% at 85% 10%, rgba(236,28,36,0.07), transparent 62%)",
+        }}
+      />
+
+      <div className="relative mx-auto grid max-w-7xl gap-16 px-5 md:grid-cols-2 md:gap-20 md:px-8">
         {/* Sol: bilgiler */}
         <div data-reveal>
-          <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-almila-red md:text-xs">
-            04 <span className="inline-block h-px w-10 bg-almila-red/50" /> İletişim
+          <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.4em] text-mist md:text-[11px]">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-almila-red" />
+            04 — İletişim
           </p>
-          <h2 className="mt-5 font-display text-4xl font-black uppercase leading-[1.02] tracking-tight text-paper md:text-6xl">
-            Projenizi <span className="text-almila-red">konuşalım</span>
+          <h2 className="mt-6 font-display text-4xl font-normal leading-[1.08] tracking-tight text-paper md:text-6xl">
+            Projenizi{" "}
+            <em className="font-light italic text-almila-red">konuşalım.</em>
           </h2>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
+          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-mist">
             Filo ihtiyacınız, servis planlamanız veya taşımacılık projeniz için
             bize ulaşın; aynı gün içinde dönüş yapalım.
           </p>
 
-          <div className="mt-10 space-y-5">
-            <a
-              href={company.phoneHref}
-              className="group flex items-center gap-4"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-almila-red/10 text-almila-red transition-colors group-hover:bg-almila-red group-hover:text-white">
-                <Phone size={19} />
+          <div className="mt-11 space-y-6">
+            <a href={company.phoneHref} className="group flex items-center gap-5">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line-dark text-paper/80 transition-colors group-hover:border-almila-red group-hover:text-almila-red">
+                <Phone size={18} strokeWidth={1.7} />
               </span>
-              <span className="text-base font-medium text-paper transition-colors group-hover:text-almila-red">
+              <span className="font-display text-xl text-paper transition-colors group-hover:text-almila-red md:text-2xl">
                 {company.phone}
               </span>
             </a>
-            <a
-              href={`mailto:${company.email}`}
-              className="group flex items-center gap-4"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-almila-red/10 text-almila-red transition-colors group-hover:bg-almila-red group-hover:text-white">
-                <Mail size={19} />
+            <a href={`mailto:${company.email}`} className="group flex items-center gap-5">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line-dark text-paper/80 transition-colors group-hover:border-almila-red group-hover:text-almila-red">
+                <Mail size={18} strokeWidth={1.7} />
               </span>
-              <span className="text-base font-medium text-paper transition-colors group-hover:text-almila-red">
+              <span className="font-display text-xl text-paper transition-colors group-hover:text-almila-red md:text-2xl">
                 {company.email}
               </span>
             </a>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line-dark bg-line-dark sm:grid-cols-3">
             {company.branches.map((b) => (
-              <div
-                key={b.city}
-                className="rounded-xl border border-ink-line bg-ink p-4"
-              >
-                <div className="flex items-center gap-2 text-sm font-bold text-paper">
+              <div key={b.city} className="bg-ink-2 p-5">
+                <div className="flex items-center gap-2 font-display text-lg text-paper">
                   <MapPin size={14} className="text-almila-red" />
                   {b.city}
                 </div>
-                <p className="mt-1 text-xs text-muted">{b.label}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted">
+                <p className="mt-0.5 text-[10px] font-bold uppercase tracking-[0.25em] text-mist/70">
+                  {b.label}
+                </p>
+                <p className="mt-3 text-xs leading-relaxed text-mist">
                   {b.address}
                 </p>
               </div>
@@ -85,30 +90,27 @@ export function ContactSection() {
         {/* Sağ: form */}
         <div data-reveal data-reveal-delay="0.15">
           {sent ? (
-            <div className="flex h-full min-h-80 flex-col items-center justify-center rounded-2xl border border-ink-line bg-ink p-10 text-center">
-              <CheckCircle2 size={44} className="text-almila-red" />
-              <h3 className="mt-5 text-xl font-bold text-paper">
+            <div className="flex h-full min-h-80 flex-col items-center justify-center rounded-2xl border border-line-dark p-10 text-center">
+              <CheckCircle2 size={44} className="text-almila-red" strokeWidth={1.5} />
+              <h3 className="mt-6 font-display text-2xl text-paper">
                 E-posta taslağınız hazırlandı
               </h3>
-              <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-mist">
                 E-posta uygulamanız açıldı. Göndermeyi tamamladığınızda en kısa
                 sürede size dönüş yapacağız.
               </p>
               <button
                 onClick={() => setSent(false)}
-                className="mt-6 text-sm font-semibold text-almila-red hover:text-paper"
+                className="mt-7 border-b border-almila-red pb-0.5 text-sm font-semibold text-almila-red hover:text-paper"
               >
                 Yeni mesaj yaz
               </button>
             </div>
           ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="rounded-2xl border border-ink-line bg-ink p-6 md:p-8"
-            >
-              <div className="grid gap-5">
+            <form onSubmit={handleSubmit} className="md:pt-24">
+              <div className="grid gap-9">
                 <div>
-                  <label htmlFor="name" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted">
+                  <label htmlFor="name" className="mb-1 block text-[10px] font-bold uppercase tracking-[0.3em] text-mist/80">
                     Ad Soyad
                   </label>
                   <input
@@ -116,12 +118,12 @@ export function ContactSection() {
                     name="name"
                     required
                     autoComplete="name"
-                    className="w-full rounded-xl border border-ink-line bg-ink-soft px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-muted/50 focus:border-almila-red"
+                    className="field-dark w-full text-base"
                     placeholder="Adınız ve soyadınız"
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted">
+                  <label htmlFor="phone" className="mb-1 block text-[10px] font-bold uppercase tracking-[0.3em] text-mist/80">
                     Telefon
                   </label>
                   <input
@@ -130,29 +132,29 @@ export function ContactSection() {
                     type="tel"
                     required
                     autoComplete="tel"
-                    className="w-full rounded-xl border border-ink-line bg-ink-soft px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-muted/50 focus:border-almila-red"
+                    className="field-dark w-full text-base"
                     placeholder="0 (5__) ___ __ __"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted">
+                  <label htmlFor="message" className="mb-1 block text-[10px] font-bold uppercase tracking-[0.3em] text-mist/80">
                     Mesajınız
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows={5}
-                    className="w-full resize-none rounded-xl border border-ink-line bg-ink-soft px-4 py-3 text-sm text-paper outline-none transition-colors placeholder:text-muted/50 focus:border-almila-red"
+                    rows={4}
+                    className="field-dark w-full resize-none text-base"
                     placeholder="İhtiyacınızı kısaca anlatın…"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-2 rounded-xl bg-almila-red px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-almila-red-dark hover:shadow-[0_0_32px_rgba(236,28,36,0.3)]"
+                  className="group flex w-fit items-center gap-2.5 rounded-full bg-paper px-9 py-4 text-sm font-semibold text-ink transition-colors hover:bg-almila-red hover:text-white"
                 >
-                  <Send size={16} />
                   Gönder
+                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
               </div>
             </form>

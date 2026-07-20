@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { Manifesto } from "@/components/Manifesto";
 import { AboutSection } from "@/components/AboutSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { StatsSection } from "@/components/StatsSection";
@@ -50,7 +51,8 @@ export function HomePage() {
       )}
       <Header />
       <main>
-        <Hero delay={showIntro ? 2.55 : 0.2} />
+        <Hero delay={showIntro ? 3.1 : 0.2} />
+        <Manifesto />
         <AboutSection />
         <ServicesSection />
         <StatsSection />

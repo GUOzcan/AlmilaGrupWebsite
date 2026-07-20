@@ -4,32 +4,33 @@ import { services } from "@/data/services";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-ink-line bg-ink">
-      {/* Dev kontur marka yazısı */}
-      <div aria-hidden className="pointer-events-none select-none px-5 pt-14 md:px-8">
-        <p className="font-display text-[13.5vw] leading-[0.85] font-black uppercase tracking-tighter text-outline opacity-50">
+    <footer className="relative overflow-hidden border-t border-line-dark bg-ink">
+      {/* Dev serif marka yazısı */}
+      <div aria-hidden className="pointer-events-none select-none px-5 pt-16 md:px-8">
+        <p className="text-outline font-display text-[13vw] italic leading-[0.9]">
           Almila Grup
         </p>
       </div>
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
+
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-3 md:px-8">
         <div>
           <img src="/logo-white.png" alt="Almila Grup" className="h-10 w-auto" />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
             {company.slogan}. {company.foundedYear}'dan beri kurumsal araç
             kiralama ve taşımacılık.
           </p>
         </div>
 
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-paper/60">
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.35em] text-mist/70">
             Hizmetler
           </h4>
-          <ul className="mt-4 grid gap-2.5">
+          <ul className="mt-5 grid gap-2.5">
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
                   to={`/hizmet/${s.slug}`}
-                  className="text-sm text-muted transition-colors hover:text-almila-red"
+                  className="text-sm text-mist transition-colors hover:text-almila-red"
                 >
                   {s.title}
                 </Link>
@@ -39,12 +40,12 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-paper/60">
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.35em] text-mist/70">
             İletişim
           </h4>
-          <ul className="mt-4 grid gap-2.5 text-sm text-muted">
+          <ul className="mt-5 grid gap-2.5 text-sm text-mist">
             <li>
-              <a href={company.phoneHref} className="transition-colors hover:text-almila-red">
+              <a href={company.phoneHref} className="font-display text-lg text-paper transition-colors hover:text-almila-red">
                 {company.phone}
               </a>
             </li>
@@ -55,19 +56,19 @@ export function Footer() {
             </li>
             {company.branches.map((b) => (
               <li key={b.city}>
-                {b.city} <span className="text-muted/60">· {b.label}</span>
+                {b.city} <span className="text-mist/50">· {b.label}</span>
               </li>
             ))}
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-ink-line">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-xs text-muted/70 md:flex-row md:px-8">
+      <div className="border-t border-line-dark">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-mist/60 md:flex-row md:px-8">
           <p>
             © {new Date().getFullYear()} {company.name}. Tüm hakları saklıdır.
           </p>
-          <p>Ankara · Antalya · Çorum</p>
+          <p className="font-display italic">Ankara · Antalya · Çorum</p>
         </div>
       </div>
     </footer>

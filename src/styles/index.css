@@ -1,41 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  /* Almila Grup marka renkleri */
-  --color-almila-red: #ec1c24;      /* logo kırmızısı — birincil vurgu */
-  --color-almila-red-dark: #d20a11; /* koyu kırmızı — hover/degrade */
-  --color-ink: #0a0a0a;             /* RAL 9005 — ana zemin */
-  --color-ink-soft: #111113;        /* kart/section zemini */
-  --color-ink-line: #232326;        /* ince çizgiler */
-  --color-paper: #f5f5f4;           /* açık metin */
-  --color-muted: #a1a1aa;           /* ikincil metin */
+  /* ── Almila Grup tasarım sistemi ──
+     Açık "porselen" zemin + sıcak mürekkep koyusu; kırmızı yalnızca
+     ince vurgu olarak kullanılır (holding estetiği). */
+  --color-porcelain: #f3f0ea;        /* ana açık zemin */
+  --color-porcelain-2: #eae6dd;      /* ikincil açık yüzey */
+  --color-ink: #141412;              /* koyu bölümler / açık zeminde metin */
+  --color-ink-2: #1d1d1a;            /* koyu yüzey (kart) */
+  --color-graphite: #57544c;         /* açık zeminde ikincil metin */
+  --color-stone: #979288;            /* soluk metin / detay */
+  --color-mist: #b9b4a9;             /* koyu zeminde soluk metin */
+  --color-almila-red: #ec1c24;       /* marka kırmızısı — koyu zeminde */
+  --color-accent: #a8232a;           /* derin garnet — açık zeminde vurgu */
+  --color-line: rgba(20, 20, 18, 0.14);       /* açık zemin ince çizgi */
+  --color-line-dark: rgba(243, 240, 234, 0.13); /* koyu zemin ince çizgi */
+  --color-paper: #f3f0ea;            /* koyu zeminde metin */
 
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Archivo", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Times New Roman", Georgia, serif;
 }
 
 html {
-  background-color: var(--color-ink);
+  background-color: var(--color-porcelain);
 }
 
 body {
-  background-color: var(--color-ink);
-  color: var(--color-paper);
+  background-color: var(--color-porcelain);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-almila-red);
+  background: var(--color-accent);
   color: #fff;
 }
 
-/* İnce, koyu scrollbar */
+/* İnce, zemine uyumlu scrollbar */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: #3a3a3f; }
+::-webkit-scrollbar-track { background: var(--color-porcelain); }
+::-webkit-scrollbar-thumb { background: #cfc9bd; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #b9b2a3; }
 
 /* Özel imleç aktifken varsayılan imleci gizle (yalnızca hassas işaretçili cihazlar) */
 @media (pointer: fine) {
@@ -50,11 +57,11 @@ body {
 
 /* Kontur (outline) tipografi — kod ile üretilen görsel dokunun parçası */
 .text-outline {
-  -webkit-text-stroke: 1px rgba(245, 245, 244, 0.22);
+  -webkit-text-stroke: 1px rgba(243, 240, 234, 0.2);
   color: transparent;
 }
-.text-outline-red {
-  -webkit-text-stroke: 1.5px rgba(236, 28, 36, 0.55);
+.text-outline-ink {
+  -webkit-text-stroke: 1px rgba(20, 20, 18, 0.16);
   color: transparent;
 }
 
@@ -69,13 +76,44 @@ body {
   animation: marquee var(--marquee-duration, 32s) linear infinite;
 }
 
-/* Kayan ışık hüzmeleri (hero arka planı) */
-@keyframes beam-drift {
-  0%, 100% { transform: translateX(-12%) skewX(-18deg); opacity: 0.5; }
-  50%      { transform: translateX(12%) skewX(-18deg); opacity: 1; }
+/* Hero yörünge sahnesi — 3D dönen ince elipsler */
+.orbit-scene {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+.orbit-scene * {
+  transform-style: preserve-3d;
 }
 
-/* Scrollbar'sız yatay kaydırma (mobil hizmet slider'ı) */
+/* Hizmetler 3D silindir carousel sahnesi */
+.ring-scene {
+  perspective: 1700px;
+}
+.ring-scene, .ring-scene .ring-track, .ring-scene .ring-card-slot {
+  transform-style: preserve-3d;
+}
+
+/* Yumuşak süzülme (hero cam kartları) */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Alt çizgili form alanları (koyu zemin) */
+.field-dark {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-line-dark);
+  border-radius: 0;
+  padding: 0.85rem 0;
+  color: var(--color-paper);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.field-dark::placeholder { color: rgba(185, 180, 169, 0.55); }
+.field-dark:focus { border-color: var(--color-almila-red); }
+
+/* Scrollbar'sız yatay kaydırma */
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 

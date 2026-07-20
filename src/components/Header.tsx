@@ -29,35 +29,35 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled || open
-          ? "bg-ink/90 backdrop-blur-md border-b border-ink-line"
+          ? "border-b border-line bg-porcelain/85 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
         <Link to="/#top" aria-label="Almila Grup ana sayfa" className="shrink-0">
           <img
-            src="/logo-white.png"
+            src="/logo-dark.png"
             alt="Almila Grup"
             className="h-9 w-auto md:h-10"
           />
         </Link>
 
         {/* Masaüstü menü */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-9 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="text-sm font-medium tracking-wide text-paper/80 transition-colors hover:text-almila-red"
+              className="text-[13px] font-semibold uppercase tracking-[0.14em] text-ink/70 transition-colors hover:text-accent"
             >
               {item.label}
             </Link>
           ))}
           <a
             href={company.phoneHref}
-            className="flex items-center gap-2 rounded-full bg-almila-red px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-almila-red-dark"
+            className="flex items-center gap-2 rounded-full bg-ink px-6 py-2.5 text-[13px] font-semibold text-porcelain transition-colors hover:bg-accent"
           >
-            <Phone size={15} />
+            <Phone size={14} />
             <span className="hidden lg:inline">{company.phone}</span>
             <span className="lg:hidden">Ara</span>
           </a>
@@ -65,7 +65,7 @@ export function Header() {
 
         {/* Mobil menü düğmesi */}
         <button
-          className="md:hidden text-paper"
+          className="text-ink md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
         >
@@ -75,21 +75,21 @@ export function Header() {
 
       {/* Mobil menü */}
       {open && (
-        <nav className="border-t border-ink-line bg-ink/95 backdrop-blur-md md:hidden">
+        <nav className="border-t border-line bg-porcelain/95 backdrop-blur-md md:hidden">
           <div className="flex flex-col px-5 py-4">
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="border-b border-ink-line/60 py-3.5 text-base font-medium text-paper/90 last:border-0 hover:text-almila-red"
+                className="border-b border-line/60 py-3.5 font-display text-lg text-ink last:border-0 hover:text-accent"
               >
                 {item.label}
               </Link>
             ))}
             <a
               href={company.phoneHref}
-              className="mt-3 flex items-center justify-center gap-2 rounded-full bg-almila-red px-5 py-3 text-sm font-semibold text-white"
+              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3.5 text-sm font-semibold text-porcelain"
             >
               <Phone size={15} /> {company.phone}
             </a>

@@ -39,13 +39,13 @@ export function Cursor() {
 
     const onOver = (e: MouseEvent) => {
       if (isInteractive(e.target)) {
-        gsap.to(ring, { scale: 1.8, backgroundColor: "rgba(236,28,36,0.12)", duration: 0.3 });
+        gsap.to(ring, { scale: 1.9, backgroundColor: "rgba(255,255,255,0.14)", duration: 0.3 });
         gsap.to(dot, { scale: 0.5, duration: 0.3 });
       }
     };
     const onOut = (e: MouseEvent) => {
       if (isInteractive(e.target)) {
-        gsap.to(ring, { scale: 1, backgroundColor: "rgba(236,28,36,0)", duration: 0.3 });
+        gsap.to(ring, { scale: 1, backgroundColor: "rgba(255,255,255,0)", duration: 0.3 });
         gsap.to(dot, { scale: 1, duration: 0.3 });
       }
     };
@@ -68,16 +68,17 @@ export function Cursor() {
 
   return (
     <>
+      {/* mix-blend-difference: imleç hem açık hem koyu zeminde görünür kalır */}
       <div
         ref={dotRef}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-95 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-almila-red opacity-0"
+        className="pointer-events-none fixed top-0 left-0 z-95 h-2 w-2 rounded-full bg-white opacity-0 mix-blend-difference"
         style={{ marginLeft: "-4px", marginTop: "-4px" }}
       />
       <div
         ref={ringRef}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-95 h-9 w-9 rounded-full border border-almila-red/60 opacity-0"
+        className="pointer-events-none fixed top-0 left-0 z-95 h-9 w-9 rounded-full border border-white/70 opacity-0 mix-blend-difference"
         style={{ marginLeft: "-18px", marginTop: "-18px" }}
       />
     </>

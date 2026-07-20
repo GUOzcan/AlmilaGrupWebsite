@@ -114,6 +114,27 @@ export function splitChars(el: HTMLElement): HTMLElement[] {
   return chars;
 }
 
+/**
+ * Bir paragrafı kelimelerine böler (scroll ile kelime kelime belirme için).
+ * Boşluklar korunur; erişilebilirlik için aria-label eklenir.
+ */
+export function splitWords(el: HTMLElement): HTMLElement[] {
+  const text = el.textContent ?? "";
+  el.textContent = "";
+  el.setAttribute("aria-label", text);
+  const words: HTMLElement[] = [];
+  text.split(" ").forEach((word, i, arr) => {
+    const span = document.createElement("span");
+    span.className = "inline-block";
+    span.setAttribute("aria-hidden", "true");
+    span.textContent = word;
+    el.appendChild(span);
+    words.push(span);
+    if (i < arr.length - 1) el.appendChild(document.createTextNode(" "));
+  });
+  return words;
+}
+
 /** Buton/bağlantıya "mıknatıs" etkisi: imleç yaklaşınca öğe hafifçe ona doğru kayar */
 export function useMagnetic(
   ref: RefObject<HTMLElement | null>,
