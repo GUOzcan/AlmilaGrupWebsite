@@ -11,9 +11,8 @@ export const company = {
   foundedCity: "Çorum",
   hqCity: "Ankara",
 
-  // TODO: Telefon numarası doğrulanacak (siteden çekilemedi)
-  phone: "+90 (312) 000 00 00",
-  phoneHref: "tel:+903120000000",
+  phone: "0 850 888 0 999",
+  phoneHref: "tel:+908508880999",
   email: "info@almilagrup.com.tr",
 
   branches: [
@@ -26,12 +25,14 @@ export const company = {
     {
       city: "Antalya",
       label: "Şube",
-      address: "Antalya / Türkiye",
+      address:
+        "Doğuyaka Mah. Termessos Bulvarı No: 29/403 Muratpaşa / Antalya",
     },
     {
       city: "Çorum",
       label: "Şube",
-      address: "Çorum / Türkiye",
+      address:
+        "Yeniyol Mah. Gazi Caddesi Sarıgül İş Merkezi Kat 3 No: 10 Merkez / Çorum",
     },
   ],
 
