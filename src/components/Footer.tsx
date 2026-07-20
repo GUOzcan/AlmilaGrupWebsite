@@ -4,7 +4,13 @@ import { services } from "@/data/services";
 
 export function Footer() {
   return (
-    <footer className="border-t border-ink-line bg-ink">
+    <footer className="relative overflow-hidden border-t border-ink-line bg-ink">
+      {/* Dev kontur marka yazısı */}
+      <div aria-hidden className="pointer-events-none select-none px-5 pt-14 md:px-8">
+        <p className="font-display text-[13.5vw] leading-[0.85] font-black uppercase tracking-tighter text-outline opacity-50">
+          Almila Grup
+        </p>
+      </div>
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
         <div>
           <img src="/logo-white.png" alt="Almila Grup" className="h-10 w-auto" />

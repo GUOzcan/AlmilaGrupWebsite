@@ -27,10 +27,10 @@ export function ContactSection() {
       <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-20 md:px-8">
         {/* Sol: bilgiler */}
         <div data-reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-almila-red">
-            İletişim
+          <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-almila-red md:text-xs">
+            04 <span className="inline-block h-px w-10 bg-almila-red/50" /> İletişim
           </p>
-          <h2 className="mt-4 text-3xl font-bold leading-tight text-paper md:text-5xl">
+          <h2 className="mt-5 font-display text-4xl font-black uppercase leading-[1.02] tracking-tight text-paper md:text-6xl">
             Projenizi <span className="text-almila-red">konuşalım</span>
           </h2>
           <p className="mt-5 max-w-md text-base leading-relaxed text-muted">

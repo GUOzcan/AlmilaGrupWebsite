@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { ArrowLeft, MapPin, ShieldCheck, Handshake, Gauge } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { useReveals } from "@/lib/animate";
+import { useReveals, scrollToTarget } from "@/lib/animate";
 import { company } from "@/data/company";
 
 const values = [
@@ -27,7 +27,7 @@ const values = [
 export function AboutPage() {
   const ref = useRef<HTMLDivElement>(null);
   useReveals(ref);
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => scrollToTarget(0, { immediate: true }), []);
 
   return (
     <div ref={ref}>
@@ -54,7 +54,7 @@ export function AboutPage() {
             <p data-reveal className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-almila-red">
               Hakkımızda
             </p>
-            <h1 data-reveal className="mt-4 text-4xl font-bold leading-tight text-paper md:text-6xl">
+            <h1 data-reveal className="mt-4 font-display text-4xl font-black uppercase leading-[1.02] tracking-tight text-paper md:text-6xl">
               {company.name}
             </h1>
             <p data-reveal className="mt-4 text-lg text-muted">

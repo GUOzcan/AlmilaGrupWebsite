@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router";
 import { ArrowLeft, ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { useReveals } from "@/lib/animate";
+import { useReveals, scrollToTarget } from "@/lib/animate";
 import { getService, services } from "@/data/services";
 import { company } from "@/data/company";
 
@@ -13,7 +13,7 @@ export function ServicePage() {
   const ref = useRef<HTMLDivElement>(null);
 
   useReveals(ref);
-  useEffect(() => window.scrollTo(0, 0), [slug]);
+  useEffect(() => scrollToTarget(0, { immediate: true }), [slug]);
 
   if (!service) {
     return (
@@ -59,7 +59,7 @@ export function ServicePage() {
             <div data-reveal className="mt-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-almila-red/10 text-almila-red">
               <Icon size={30} strokeWidth={1.7} />
             </div>
-            <h1 data-reveal className="mt-6 text-4xl font-bold leading-tight text-paper md:text-5xl">
+            <h1 data-reveal className="mt-6 font-display text-4xl font-black uppercase leading-[1.02] tracking-tight text-paper md:text-6xl">
               {service.title}
             </h1>
             <p data-reveal className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
